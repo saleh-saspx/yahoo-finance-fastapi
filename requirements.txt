@@ -1,0 +1,7 @@
+fastapi
+fastapi-cache
+uvicorn
+yfinance
+fastapi-cache2
+redis
+pydantic
