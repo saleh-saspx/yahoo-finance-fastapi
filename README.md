@@ -1,4 +1,3 @@
-Here’s an updated `README.md` file incorporating your project title and repository link:
 # Yahoo Finance FastAPI
 
 This project provides a FastAPI-based API for fetching and caching financial data using the Yahoo Finance API. It leverages Redis for caching to improve data retrieval speed and reduce repeated calls to external APIs.
