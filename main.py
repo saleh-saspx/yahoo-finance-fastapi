@@ -15,10 +15,9 @@ from yahoo.CountryCurrency import CountryCurrency
 from yahoo.OilMarket import OilMarket
 from Models.RequestData import DataModel
 
-# Pydantic models for responses
 class Item(BaseModel):
-    name: str
-    price: float
+    buy: float
+    sell: float
 
 class ResponseModel(BaseModel):
     items: List[Item]
