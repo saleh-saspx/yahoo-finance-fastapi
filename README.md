@@ -38,19 +38,19 @@ docker-compose up --build
 
 This command will:
 - Build the Docker image for the FastAPI application.
-- Start the FastAPI app on port `8010` and Redis on port `6379`.
+- Start the FastAPI app on port `8011` and Redis on port `6371`.
 
 ### 3. Test the API
 
-Once the containers are running, you can access the API at `http://localhost:8010`.
+Once the containers are running, you can access the API at `http://localhost:8011`.
 
 To check the server status, you can send a GET request to the root endpoint:
 
 ```bash
-curl http://localhost:8010/
+curl http://localhost:8011/
 ```
 
-To explore available endpoints, open `http://localhost:8010/docs` in your browser. FastAPI provides an interactive Swagger UI for easy API testing and documentation.
+To explore available endpoints, open `http://localhost:8011/docs` in your browser. FastAPI provides an interactive Swagger UI for easy API testing and documentation.
 
 ### Example Endpoints
 
