@@ -37,7 +37,7 @@ app = FastAPI(lifespan=lifespan)
 def read_root():
     return {"status": "up !"}
 
-@app.get("/yahoo/crypto", response_model=ResponseModel)
+@app.post("/yahoo/crypto", response_model=ResponseModel)
 @cache(expire=60 * 12)
 async def get_crypto_price(DataModel:DataModel):
     try:
@@ -49,7 +49,7 @@ async def get_crypto_price(DataModel:DataModel):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/yahoo/stock", response_model=ResponseModel)
+@app.post("/yahoo/stock", response_model=ResponseModel)
 @cache(expire=60 * 12)
 async def get_stocks_price(DataModel:DataModel):
     try:
@@ -61,7 +61,7 @@ async def get_stocks_price(DataModel:DataModel):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/yahoo/country", response_model=ResponseModel)
+@app.post("/yahoo/country", response_model=ResponseModel)
 @cache(expire=60 * 12)
 async def get_country_price(DataModel:DataModel):
     try:
@@ -73,7 +73,7 @@ async def get_country_price(DataModel:DataModel):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/yahoo/oil",response_model=ResponseModel)
+@app.post("/yahoo/oil",response_model=ResponseModel)
 @cache(expire=60 * 12)
 async def get_oil_price(DataModel:DataModel):
     try:
