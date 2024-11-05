@@ -24,7 +24,8 @@ class OilMarket:
                 "buy": current_price * 1.0005, 
                 "sell": current_price,          
                 "change_percent": change_percent,
-                "volume": volume
+                "volume": volume,
+                'info': data.info
             }
         return oil_data
 
@@ -35,10 +36,17 @@ class OilMarket:
 
     def get_top_oil_stocks(self):
         return self.top_symbols
+    
+
+    def get_company_info(self, symbol):
+        data = yf.Ticker(symbol)
+        return data.info
 
 if __name__ == "__main__":
-    oil_market = OilMarket()
+    oil_market = OilMarket(['XOM'])
 
     print(oil_market.get_current_prices())
 
     print(oil_market.get_historical_data("XOM", period="1mo"))
+
+    print(oil_market.get_company_info('XOM'))

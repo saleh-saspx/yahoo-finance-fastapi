@@ -14,7 +14,8 @@ class CountryCurrency:
             prices[symbol] = {
                 "buy": current_price * 1.0005,      
                 "sell": current_price,               
-                "change_percent": change_percent,    
+                "change_percent": change_percent, 
+                'info' : data.info   
             }
         return prices
 

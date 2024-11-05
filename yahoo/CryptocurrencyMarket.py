@@ -12,6 +12,7 @@ class CryptocurrencyMarket:
             current_prices[symbol] = {
                 "sell" : current_price,
                 'buy' : current_price  * 1.0005,
+                'info' : data.info   
             }
         return current_prices
 

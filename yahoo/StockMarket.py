@@ -25,7 +25,8 @@ class StockMarket:
                 "buy": current_price * 1.0005,
                 "sell": current_price,         
                 "change_percent": change_percent,
-                "volume": volume
+                "volume": volume,
+                'info': data.info
             }
         return stock_data
 
@@ -42,10 +43,10 @@ class StockMarket:
         return self.top_symbols
 
 if __name__ == "__main__":
-    stock_market = StockMarket()
+    stock_market = StockMarket(["AAPL", "TSLA", "GOOGL", "AMZN", "MSFT", "META", "NFLX", "NVDA", "BABA", "AMD"])
 
-    print(stock_market.get_current_prices())
+    # print(stock_market.get_current_prices())
 
-    print(stock_market.get_historical_data("AAPL", period="1mo"))
+    # print(stock_market.get_historical_data("AAPL", period="1mo"))
 
     print(stock_market.get_company_info("TSLA"))
