@@ -5,3 +5,5 @@ yfinance
 fastapi-cache2
 redis
 pydantic
+yahoo_fin
+lxml_html_clean

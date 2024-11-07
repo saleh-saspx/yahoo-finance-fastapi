@@ -1,3 +1,4 @@
+from requests_html import HTMLSession  
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from collections.abc import AsyncIterator
@@ -14,7 +15,7 @@ from yahoo.StockMarket import StockMarket
 from yahoo.CountryCurrency import CountryCurrency
 from yahoo.OilMarket import OilMarket
 from Models.RequestData import DataModel
-
+from Models.GetItem import StockItem,CryptoItem,OilItem,CurrencyItem
 class Item(BaseModel):
     buy: float
     sell: float
@@ -82,5 +83,57 @@ async def get_oil_price(DataModel:DataModel):
             "items": oil.get_current_prices()
         })  
         return JSONResponse(content=cleaned_data) 
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/get-items/stock",response_model=ResponseModel)
+@cache(expire=60 * 30)
+async def get_item_list_stock():
+    try:
+        stock_item = StockItem()
+        return JSONResponse(content={
+            'items' : stock_item.getItem(),
+            'key': "sotck_market"
+        }) 
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/get-items/crypto",response_model=ResponseModel)
+@cache(expire=60 * 30)
+async def get_item_list_crypto():
+    try:
+        stock_item = CryptoItem()
+        return JSONResponse(content={
+            'items' : stock_item.getItem(),
+            'key': "crypto_market"
+        }) 
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/get-items/oil",response_model=ResponseModel)
+@cache(expire=60 * 30)
+async def get_item_list_oil():
+    try:
+        oil = OilItem()
+        return JSONResponse(content={
+            'items' : oil.getItem(),
+            'key': "oil_market"
+        }) 
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/get-items/currency",response_model=ResponseModel)
+@cache(expire=60 * 30)
+async def get_item_list_currency():
+    try:
+        stock_item = CurrencyItem()
+        return JSONResponse(content={
+            'items' : stock_item.getItem(),
+            'key': "currency_market"
+        }) 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
