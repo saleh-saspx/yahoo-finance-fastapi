@@ -45,7 +45,7 @@ class CurrencyItem():
     def __init__(self) -> None:
         pass
     
-    def getItem():
+    def getItem(self):
         session = HTMLSession()
         resp = session.get("https://finance.yahoo.com/markets/currencies/")
         tables = pd.read_html(resp.html.raw_html)

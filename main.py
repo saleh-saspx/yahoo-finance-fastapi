@@ -62,7 +62,7 @@ async def get_stocks_price(DataModel:DataModel):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/yahoo/country", response_model=ResponseModel)
+@app.post("/yahoo/currency", response_model=ResponseModel)
 @cache(expire=60 * 12)
 async def get_country_price(DataModel:DataModel):
     try:
