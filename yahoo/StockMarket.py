@@ -9,7 +9,7 @@ class StockMarket:
         for symbol in self.top_symbols:
             data = yf.Ticker(symbol)
             
-            history = data.history(period="1d")
+            history = data.history(period="1d", interval="15m")
             if history.empty:
                 continue  
             

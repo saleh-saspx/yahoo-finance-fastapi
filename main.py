@@ -16,6 +16,8 @@ from yahoo.CountryCurrency import CountryCurrency
 from yahoo.OilMarket import OilMarket
 from Models.RequestData import DataModel
 from Models.GetItem import StockItem,CryptoItem,OilItem,CurrencyItem
+from yahoo.CryptoCurrencyHistoryCall import HistoricalDataRequest , get_historical_data
+
 class Item(BaseModel):
     buy: float
     sell: float
@@ -137,3 +139,14 @@ async def get_item_list_currency():
         }) 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/get_historical_data")
+async def fetch_historical_data(request: HistoricalDataRequest):
+    symbols = request.symbols
+    start_date = request.start_date
+    end_date = request.end_date
+    interval = request.interval
+
+    result = get_historical_data(symbols, start_date, end_date, interval)
+
+    return result

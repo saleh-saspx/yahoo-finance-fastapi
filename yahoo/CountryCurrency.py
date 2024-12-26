@@ -10,8 +10,7 @@ class CountryCurrency:
         for symbol in self.top_symbols:
             try:
                 data = yf.Ticker(symbol)
-                history = data.history(period="1d")
-                
+                history = data.history(period="5d", interval="1d")
                 if not history.empty:
                     current_price = history['Close'].iloc[-1]
                     previous_close = history['Close'].iloc[0]
